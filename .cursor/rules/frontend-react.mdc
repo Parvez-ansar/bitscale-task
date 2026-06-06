@@ -1,0 +1,28 @@
+---
+description: React and Next.js frontend standards
+globs: "**/*.{tsx,ts}"
+alwaysApply: false
+---
+
+# Frontend (React / Next.js)
+
+- Use TypeScript wherever possible
+- Prefer functional components and React Hooks
+- Follow existing state management in the codebase (Context, Redux Toolkit, etc.)
+- Build reusable components per atomic design layers
+- Ensure responsive design and accessibility
+- Avoid unnecessary re-renders; optimize when it matters
+- Use memoization only when it provides measurable value
+
+## Error handling
+
+- Handle loading, empty, and error states
+- Add meaningful error messages
+- Fail gracefully — never crash the UI silently
+
+```tsx
+// ✅ GOOD — explicit UI states
+if (isLoading) return <Spinner />;
+if (error) return <ErrorMessage message={error.message} />;
+if (!data?.length) return <EmptyState />;
+```

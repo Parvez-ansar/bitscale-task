@@ -1,0 +1,61 @@
+/*
+ * Bitscale design tokens (Figma)
+ *
+ * Layer 1 — palette: raw values, single source of truth
+ * Layer 2 — semantic: purpose-based tokens for UI
+ * Layer 3 — @theme in globals.css: Tailwind utility classes (bg-*, text-*, border-*)
+ */
+
+:root {
+  /* Palette — neutral */
+  --palette-white: #ffffff;
+  --palette-gray-50: #f3f4f6;
+  --palette-gray-200: #e5e7eb;
+  --palette-gray-400: #9ca3af;
+  --palette-gray-500: #6b7280;
+  --palette-gray-800: #1f2a37;
+  --palette-gray-900: #1a202c;
+  --palette-gray-950: #111928;
+
+  /* Palette — accent */
+  --palette-blue-600: #1a56db;
+  --palette-blue-500: #347fa9;
+  --palette-blue-50: #e7f3f8;
+  --palette-green-600: #438361;
+  --palette-green-50: #edf3ec;
+  --palette-amber-500: #cb912e;
+  --palette-amber-50: #fbecdd;
+
+  /* Semantic — backgrounds */
+  --background-body: var(--palette-white);
+  --background-subtle: var(--palette-gray-50);
+  --background-muted: var(--palette-gray-200);
+  --background-inverse: var(--palette-gray-800);
+  --background-info: rgb(231 243 248 / 0.5);
+  --background-success: var(--palette-green-50);
+  --background-warning: var(--palette-amber-50);
+
+  /* Semantic — text */
+  --text-heading: var(--palette-gray-900);
+  --text-body: var(--palette-gray-950);
+  --text-helper: var(--palette-gray-500);
+  --text-disabled: var(--palette-gray-400);
+  --text-tab: var(--palette-gray-800);
+  --text-tab-active: var(--palette-blue-600);
+  --text-info: var(--palette-blue-500);
+  --text-success: var(--palette-green-600);
+  --text-warning: var(--palette-amber-500);
+
+  /* Semantic — interactive */
+  --button-primary: var(--palette-gray-800);
+  --button-accent: var(--palette-green-600);
+  --text-on-solid: var(--palette-white);
+
+  /* Semantic — borders */
+  --border-default: var(--palette-gray-200);
+  --border-focus: var(--palette-blue-600);
+
+  /* Semantic — layout */
+  --layout-header-height: 56px;
+  --layout-sidebar-width: 224px;
+}

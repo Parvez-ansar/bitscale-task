@@ -1,65 +1,74 @@
-import Image from "next/image";
+import { Button } from "@/components/atoms/button/Button";
+import BuildingIcon from "@/components/atoms/icons/BuildingIcon";
+import ListIcon from "@/components/atoms/icons/ListIcon";
+import PlusIcon from "@/components/atoms/icons/PlusIcon";
+import UserIcon from "@/components/atoms/icons/UserIcon";
+import ProductDemo from "@/components/molecules/product-demo/ProductDemo";
+import SearchBar from "@/components/molecules/search-bar/SearchBar";
+import { Tabs } from "@/components/molecules/table-tabs/TableTabs";
+import LatestCarousel from "@/components/organisms/latest-carousel/LatestCarousel";
+import WorkbookTableFeatures from "@/components/organisms/workbook-table-features/WorkbookTableFeatures";
+
+const slides = [
+  {
+    title: "How to Integrate 2 Way HubSpot",
+    description:
+      "Prerequisites for this Integration is that you should have a HubSpot account and Copy the API key. We simple add our API key through the integrations pa...",
+    postedAt: "Posted today",
+    thumbnail: "https://picsum.photos/400/225?v=1",
+  },
+  {
+    title: "Setting Up Your First Playbook",
+    description:
+      "Learn how to set up your first playbook in Bitscale and automate your outreach workflow in under 10 minutes.",
+    postedAt: "Posted yesterday",
+    thumbnail: "https://picsum.photos/400/225?v=2",
+  },
+  {
+    title: "How to Integrate 2 Way HubSpot",
+    description:
+      "Prerequisites for this Integration is that you should have a HubSpot account and Copy the API key. We simple add our API key through the integrations pa...",
+    postedAt: "Posted today",
+    thumbnail: "https://picsum.photos/400/225?v=3",
+  },
+  {
+    title: "Advanced API Integrations",
+    description:
+      "Deep dive into connecting third-party tools with Bitscale's API layer to build powerful automated sequences.",
+    postedAt: "Posted 3 days ago",
+    thumbnail: "https://picsum.photos/400/225?v=4",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="flex flex-col gap-6">
+      <div className="flex items-start justify-between">
+        <div className="flex flex-col">
+          <h4 className="text-lg font-semibold">Welcome back, Tim!</h4>
+          <p className="text-sm text-helper">
+            Here&apos;s your daily scoop on Bitscale!
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="flex items-center gap-3">
+          <Button
+            startContent={<BuildingIcon className="text-success" />}
+            variant="outlined">
+            Find Companies
+          </Button>
+          <Button
+            startContent={<UserIcon className="text-[#8F65AF]" />}
+            variant="outlined">
+            Find People
+          </Button>
+          <Button startContent={<PlusIcon />}>New Grid</Button>
         </div>
-      </main>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <LatestCarousel slides={slides} heading="Latest from Bitscale" />
+        <ProductDemo />
+      </div>
+      <WorkbookTableFeatures />
     </div>
   );
 }

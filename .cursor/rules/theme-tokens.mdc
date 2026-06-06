@@ -1,0 +1,47 @@
+---
+description: Theme tokens and Tailwind styling rules
+globs: "**/*.{tsx,css}"
+alwaysApply: false
+---
+
+# Theme & Styling
+
+## Token layers
+
+1. `app/theme.css` — `--palette-*` and semantic tokens (`--background-*`, `--text-*`, `--layout-*`)
+2. `app/globals.css` — `@theme inline` maps tokens to Tailwind utilities (must live in the Tailwind entry file)
+
+## In components
+
+Use semantic Tailwind classes, never hardcoded hex:
+
+```tsx
+// ❌ BAD
+<p className="text-[#6B7280]">Helper</p>
+
+// ✅ GOOD
+<p className="text-helper">Helper</p>
+<h1 className="text-heading">Title</h1>
+<button className="bg-btn-primary text-on-solid">Save</button>
+```
+
+## Key utilities
+
+| Purpose | Class |
+|---|---|
+| Page background | `bg-body` |
+| Body text | `text-foreground` |
+| Headings | `text-heading` |
+| Helper text | `text-helper` |
+| Tabs | `text-tab`, `text-tab-active`, `text-disabled` |
+| Buttons | `bg-btn-primary`, `bg-btn-accent` |
+| Surfaces | `bg-subtle`, `bg-muted`, `bg-inverse` |
+| Borders | `border-border` |
+| Header height | `h-header` (56px via `--layout-header-height`) |
+| Sidebar width | `w-sidebar` (224px via `--layout-sidebar-width`) |
+
+## Changing colors
+
+- Edit palette/semantic vars in `app/theme.css` only
+- Use `@theme inline` (not plain `@theme`) to support future theme switching
+- Base element styles belong in `app/globals.css`

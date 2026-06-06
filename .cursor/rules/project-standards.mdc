@@ -1,0 +1,35 @@
+---
+description: Core Bitscale project standards
+alwaysApply: true
+---
+
+# Bitscale Project Standards
+
+## Stack
+
+- Next.js 16 (App Router) + React 19 + TypeScript
+- Tailwind CSS v4 (CSS-first config, no `tailwind.config.js`)
+- Design tokens in `app/theme.css`
+
+## Imports
+
+- Use `@/` path alias (`@/components/...`, `@/app/...`)
+- Import components directly from their file — no barrel `index.ts` re-exports
+
+```tsx
+import DashboardLayout from "@/components/templates/dashboard-layout/DashboardLayout";
+```
+
+## Code changes
+
+- Minimize scope — only change what the task requires
+- Match existing naming, types, and file structure
+- Do not add docs or helpers unless asked
+- Add tests when modifying critical functionality (see `testing.mdc`)
+
+## File layout
+
+```
+app/           → routes, layouts, global styles, theme
+components/    → atomic design UI (atoms → templates)
+```

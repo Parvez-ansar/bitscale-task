@@ -1,0 +1,28 @@
+---
+description: Coding style and refactoring standards
+alwaysApply: true
+---
+
+# Coding Style
+
+- Write clean, production-ready code
+- Prioritize readability and maintainability
+- Follow existing naming conventions and folder structures
+- Avoid unnecessary abstractions
+- Keep functions small and focused
+- Remove dead code; avoid duplication
+
+## Refactoring
+
+- Refactor only when it improves clarity, maintainability, or performance
+- Do not introduce breaking changes without explanation
+- Clearly mention trade-offs
+
+## Code review mindset
+
+When reviewing or implementing, watch for:
+
+- Bugs, edge cases, and security concerns
+- Performance issues
+- Improvements with clear justification
+- Be direct and concise

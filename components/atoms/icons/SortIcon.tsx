@@ -1,0 +1,20 @@
+export default function SortIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true">
+      <path
+        d="M4.66667 10L8.00001 13.3333L11.3333 10M4.66667 6L8.00001 2.66666L11.3333 6"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

@@ -1,0 +1,48 @@
+---
+description: Atomic design component conventions
+globs: components/**/*
+alwaysApply: false
+---
+
+# Atomic Design
+
+## Layer placement
+
+| Layer | Folder | Examples |
+|---|---|---|
+| Atoms | `components/atoms/` | Button, Input, Label, Icon |
+| Molecules | `components/molecules/` | FormField, TabItem, SearchBar |
+| Organisms | `components/organisms/` | Header, Sidebar, TabNavigation |
+| Templates | `components/templates/` | DashboardLayout, AuthLayout |
+| Pages | `app/` | Route files with data + content |
+
+## File structure
+
+One component per file, colocated in a named folder:
+
+```
+components/atoms/button/Button.tsx
+```
+
+Import directly from the component file:
+
+```tsx
+import { Button } from "@/components/atoms/button/Button";
+```
+
+Do not add barrel `index.ts` re-export files.
+
+## Rules
+
+- Atoms: no business logic, no data fetching
+- Molecules: compose atoms; single focused responsibility
+- Organisms: compose molecules/atoms; reusable across pages
+- Templates: layout shells with `children` slots; no route data fetching
+
+```tsx
+// ❌ BAD — page layout in atoms
+components/atoms/Dashboard.tsx
+
+// ✅ GOOD
+components/templates/dashboard-layout/DashboardLayout.tsx
+```
