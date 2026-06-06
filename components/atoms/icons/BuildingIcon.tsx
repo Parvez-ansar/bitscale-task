@@ -1,8 +1,16 @@
-export default function BuildingIcon({ className }: { className?: string }) {
+export default function BuildingIcon({
+  className,
+  width = 17,
+  height = 17,
+}: {
+  className?: string;
+  width?: number;
+  height?: number;
+}) {
   return (
     <svg
-      width="17"
-      height="17"
+      width={width}
+      height={height}
       viewBox="0 0 17 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

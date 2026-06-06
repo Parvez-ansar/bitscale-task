@@ -7,6 +7,33 @@ import { useDotButton } from "./useDotButton";
 import Image from "next/image";
 import PlayIcon from "@/components/atoms/icons/PlayIcon";
 
+const slideThemes = [
+  {
+    bg: "bg-[#EFF7FC]",
+    heading: "text-[#2E7BAF]",
+    dot: "bg-[#2E7BAF]",
+    inactiveDot: "bg-[#8CB7D1]",
+  },
+  {
+    bg: "bg-[#FDF1F7]",
+    heading: "text-[#C95A97]",
+    dot: "bg-[#C95A97]",
+    inactiveDot: "bg-[#D99ABB]",
+  },
+  {
+    bg: "bg-[#F3F7F2]",
+    heading: "text-[#4E8D69]",
+    dot: "bg-[#4E8D69]",
+    inactiveDot: "bg-[#99BEA7]",
+  },
+  {
+    bg: "bg-[#F6F2F7]",
+    heading: "text-[#9367B8]",
+    dot: "bg-[#9367B8]",
+    inactiveDot: "bg-[#BCA3D4]",
+  },
+];
+
 export interface CarouselSlide {
   title: string;
   description: string;
@@ -30,11 +57,17 @@ export default function LatestCarousel({
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
 
+  const currentTheme = slideThemes[selectedIndex % slideThemes.length];
+
   return (
-    <div className="rounded-xl bg-info-subtle py-4 px-5 flex flex-col gap-4">
+    <div
+      className={`rounded-xl py-4 px-5 flex flex-col gap-4 transition-colors duration-500 ${currentTheme.bg}`}>
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-medium text-info">{heading}</h2>
+        <h2
+          className={`text-sm font-medium transition-colors duration-500 ${currentTheme.heading}`}>
+          {heading}
+        </h2>
 
         {/* Dots */}
         <div className="flex items-center gap-1">
@@ -45,8 +78,8 @@ export default function LatestCarousel({
               aria-label={`Go to slide ${index + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 index === selectedIndex
-                  ? "w-6 bg-info"
-                  : "w-1.5 bg-border hover:bg-info/40"
+                  ? `w-6 ${currentTheme.dot}`
+                  : `w-1.5 ${currentTheme.inactiveDot}`
               }`}
             />
           ))}

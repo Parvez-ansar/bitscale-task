@@ -74,4 +74,30 @@
       0px 5px 7.5px -1.5px rgba(0, 0, 0, 0.1),
       0px 2px 3px -2px rgba(0, 0, 0, 0.1);
   }
+
+  .icon-badge {
+    width: 21px;
+    height: 21px;
+    border: 1px solid #f1f1ef;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-body);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background-muted);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-disabled);
 }
