@@ -1,11 +1,14 @@
+"use client";
 import { Button } from "@/components/atoms/button/Button";
 import BuildingIcon from "@/components/atoms/icons/BuildingIcon";
 import PlusIcon from "@/components/atoms/icons/PlusIcon";
 import UserIcon from "@/components/atoms/icons/UserIcon";
+import FindPeopleModal from "@/components/molecules/find-people-modal/FindPeopleModal";
 import ProductDemo from "@/components/molecules/product-demo/ProductDemo";
 import LatestCarousel from "@/components/organisms/latest-carousel/LatestCarousel";
 import WorkbookTableFeatures from "@/components/organisms/workbook-table-features/WorkbookTableFeatures";
 import WorkbookTable from "@/components/organisms/workbook-table/WorkbookTable";
+import { useState } from "react";
 
 const WORKBOOK_ROWS = [
   {
@@ -132,35 +135,45 @@ const slides = [
 ];
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex items-start justify-between">
-        <div className="flex flex-col">
-          <h4 className="text-lg font-semibold">Welcome back, Tim!</h4>
-          <p className="text-sm text-helper">
-            Here&apos;s your daily scoop on Bitscale!
-          </p>
+    <>
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex flex-col">
+            <h4 className="text-lg font-semibold">Welcome back, Tim!</h4>
+            <p className="text-sm text-helper">
+              Here&apos;s your daily scoop on Bitscale!
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+            <Button
+              startContent={<BuildingIcon className="text-success" />}
+              variant="outlined"
+              className="flex-1 sm:flex-none">
+              Find Companies
+            </Button>
+            <Button
+              startContent={<UserIcon className="text-[#8F65AF]" />}
+              variant="outlined"
+              onClick={() => setModalOpen(true)}
+              className="flex-1 sm:flex-none">
+              Find People
+            </Button>
+            <Button startContent={<PlusIcon />} className="w-full sm:w-auto">
+              New Grid
+            </Button>
+          </div>
         </div>
-        <div className="flex items-center gap-3">
-          <Button
-            startContent={<BuildingIcon className="text-success" />}
-            variant="outlined">
-            Find Companies
-          </Button>
-          <Button
-            startContent={<UserIcon className="text-[#8F65AF]" />}
-            variant="outlined">
-            Find People
-          </Button>
-          <Button startContent={<PlusIcon />}>New Grid</Button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <LatestCarousel slides={slides} heading="Latest from Bitscale" />
+          <ProductDemo />
         </div>
+        <WorkbookTableFeatures />
+        <WorkbookTable data={WORKBOOK_ROWS} />
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <LatestCarousel slides={slides} heading="Latest from Bitscale" />
-        <ProductDemo />
-      </div>
-      <WorkbookTableFeatures />
-      <WorkbookTable data={WORKBOOK_ROWS} />
-    </div>
+      <FindPeopleModal onClose={() => setModalOpen(false)} open={modalOpen} />
+    </>
   );
 }

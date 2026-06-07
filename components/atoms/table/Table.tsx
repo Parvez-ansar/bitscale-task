@@ -3,12 +3,14 @@ import { cn } from "@/lib/utils";
 export function Table({
   className,
   children,
+  wrapperClassName,
 }: {
   className?: string;
+  wrapperClassName?: string;
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-full overflow-x-auto">
+    <div className={`w-full overflow-x-auto ${wrapperClassName}`}>
       <table className={cn("w-full border-collapse", className)}>
         {children}
       </table>
@@ -79,12 +81,19 @@ export function TableHead({
 export function TableCell({
   className,
   children,
+  colSpan,
+  rowSpan,
 }: {
   className?: string;
   children: React.ReactNode;
+  colSpan?: number;
+  rowSpan?: number;
 }) {
   return (
-    <td className={cn("py-0.5 px-4 text-sm text-tab", className)}>
+    <td
+      colSpan={colSpan}
+      rowSpan={rowSpan}
+      className={cn("py-0.5 px-4 text-sm text-tab", className)}>
       {children}
     </td>
   );

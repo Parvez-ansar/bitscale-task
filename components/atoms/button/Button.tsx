@@ -33,7 +33,7 @@ export function Button({
       whileHover={disabled ? {} : { opacity: 0.85 }}
       transition={{ duration: 0.12, ease: "easeOut" }}
       className={cn(
-        "inline-flex items-center justify-center gap-1.5 h-[35px] text-sm font-medium rounded-[8px] cursor-pointer disabled:opacity-40 disabled:pointer-events-none",
+        "inline-flex whitespace-nowrap items-center justify-center gap-1.5 h-[35px] text-sm font-medium rounded-[8px] cursor-pointer disabled:opacity-40 disabled:pointer-events-none",
         iconOnly ? "w-[35px]" : "px-3",
         variantStyles[variant],
         className,

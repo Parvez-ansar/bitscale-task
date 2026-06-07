@@ -5,8 +5,8 @@ import ProgressBar from "@/components/atoms/progress-bar/ProgressBar";
 const ProductDemo = () => {
   return (
     <div className="rounded-xl bg-card-gradient py-4 px-5 flex flex-col gap-2 border border-[--palette-blue-50]">
-      <div className="flex items-center gap-3">
-        <div className="bg-[#4B5563] rounded-full h-[33px] w-[33px] flex items-center justify-center">
+      <div className="flex items-start gap-3">
+        <div className="bg-[#4B5563] rounded-full h-[33px] min-w-[33px] flex items-center justify-center">
           <TaskCompleteIcon className="text-white" />
         </div>
         <div className="flex flex-col text-[#383530]">
@@ -17,11 +17,11 @@ const ProductDemo = () => {
         </div>
       </div>
       <ProgressBar progress={75} showNumber={true} />
-      <div className="grid grid-cols-2 gap-y-3 mt-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 mt-2.5">
         <CheckMark checked text={"Create your data list"} />
         <CheckMark checked text={"Learn about BitAgent"} />
         <CheckMark checked text={"Connect an integration"} />
-        <CheckMark text={"Customise waterfall providers "} />
+        <CheckMark text={"Customise waterfall providers"} />
       </div>
     </div>
   );

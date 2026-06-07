@@ -45,81 +45,85 @@ const ICON_REGISTRY: Record<string, React.ReactNode> = {
 
 const WorkbookTable = ({ data }: { data: WorkbookRow[] }) => {
   return (
-    <Table>
-      <TableHeader>
-        <TableRow className="border-muted/80 hover:bg-body">
-          <TableHead className="w-6" />
-          <TableHead>Name</TableHead>
-          <TableHead>Edited by</TableHead>
-          <TableHead>Last edited</TableHead>
-          <TableHead>Actions</TableHead>
-        </TableRow>
-      </TableHeader>
-
-      <TableBody className="[&>tr:nth-child(-n+3)]:bg-muted/20">
-        {data.map((row) => (
-          <TableRow
-            key={row.id}
-            className="border-muted/20 nth-child(-n+3)]:bg-muted/10 hover:bg-subtle">
-            {/* Expand chevron */}
-            <TableCell className="w-6 pr-0">
-              {row.expandable && <ChevronRightIcon className="rotate-90" />}
-            </TableCell>
-
-            {/* Name */}
-            <TableCell>
-              <div className={`flex items-center gap-2`}>
-                {/* Star */}
-                <Button
-                  className="h-[unset] p-0 rounded-none bg-transparent shrink-0"
-                  startContent={
-                    <StarIcon
-                      filled={row.starred}
-                      className={row.starred ? "text-warning" : "text-disabled"}
-                    />
-                  }
-                />
-
-                {/* Icon badges */}
-                <div className="flex items-center min-w-[45px] [&>*:not(:first-child)]:ml-[-9px] shrink-0">
-                  {row.icons.map((key) => (
-                    <IconBadge key={key}>{ICON_REGISTRY[key]}</IconBadge>
-                  ))}
-                </div>
-
-                {/* Name */}
-                <span className="text-xs font-normal text-foreground truncate ml-3">
-                  {row.name}
-                </span>
-              </div>
-            </TableCell>
-
-            {/* Edited by */}
-            <TableCell>
-              <div className="flex items-center gap-2">
-                <Avatar
-                  src={row.editedBy.avatar}
-                  className="w-[21px] h-[21px] shrink-0"
-                />
-                <span className="text-xs">{row.editedBy.name}</span>
-              </div>
-            </TableCell>
-
-            {/* Last edited */}
-            <TableCell className="text-xs">{row.lastEdited}</TableCell>
-
-            {/* Actions */}
-            <TableCell>
-              <Button
-                variant="secondary"
-                className="bg-transparent hover:bg-black/10 duration-300"
-                startContent={<DotsHorizontalIcon />}
-              />
-            </TableCell>
+    <div className="overflow-x-auto lg:m-0 -m-4">
+      <Table className="min-w-[700px]">
+        <TableHeader>
+          <TableRow className="border-muted/80 hover:bg-body">
+            <TableHead className="w-6" />
+            <TableHead>Name</TableHead>
+            <TableHead>Edited by</TableHead>
+            <TableHead>Last edited</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+
+        <TableBody className="[&>tr:nth-child(-n+3)]:bg-muted/20">
+          {data.map((row) => (
+            <TableRow
+              key={row.id}
+              className="border-muted/20 nth-child(-n+3)]:bg-muted/10 hover:bg-subtle">
+              {/* Expand chevron */}
+              <TableCell className="w-6 pr-0">
+                {row.expandable && <ChevronRightIcon className="rotate-90" />}
+              </TableCell>
+
+              {/* Name */}
+              <TableCell>
+                <div className={`flex items-center gap-2`}>
+                  {/* Star */}
+                  <Button
+                    className="h-[unset] p-0 rounded-none bg-transparent shrink-0"
+                    startContent={
+                      <StarIcon
+                        filled={row.starred}
+                        className={
+                          row.starred ? "text-warning" : "text-disabled"
+                        }
+                      />
+                    }
+                  />
+
+                  {/* Icon badges */}
+                  <div className="flex items-center min-w-[45px] [&>*:not(:first-child)]:ml-[-9px] shrink-0">
+                    {row.icons.map((key) => (
+                      <IconBadge key={key}>{ICON_REGISTRY[key]}</IconBadge>
+                    ))}
+                  </div>
+
+                  {/* Name */}
+                  <span className="text-xs font-normal text-foreground truncate ml-3 max-w-[120px] sm:max-w-[200px] md:max-w-none">
+                    {row.name}
+                  </span>
+                </div>
+              </TableCell>
+
+              {/* Edited by */}
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <Avatar
+                    src={row.editedBy.avatar}
+                    className="w-[21px] h-[21px] shrink-0"
+                  />
+                  <span className="text-xs">{row.editedBy.name}</span>
+                </div>
+              </TableCell>
+
+              {/* Last edited */}
+              <TableCell className="text-xs">{row.lastEdited}</TableCell>
+
+              {/* Actions */}
+              <TableCell>
+                <Button
+                  variant="secondary"
+                  className="bg-transparent hover:bg-black/10 duration-300"
+                  startContent={<DotsHorizontalIcon />}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 

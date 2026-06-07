@@ -92,9 +92,9 @@ export default function LatestCarousel({
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="min-w-0 flex-[0_0_100%] flex gap-4 items-start">
+              className="min-w-0 flex-[0_0_100%] flex flex-col sm:flex-row gap-3 sm:gap-4 items-start">
               {/* Thumbnail */}
-              <div className="relative w-[143px] h-[97px] shrink-0 rounded-lg overflow-hidden bg-muted aspect-video">
+              <div className="relative w-full sm:w-[143px] h-[160px] sm:h-[97px] shrink-0 rounded-lg overflow-hidden bg-muted">
                 <Image
                   width={143}
                   height={97}
@@ -103,7 +103,7 @@ export default function LatestCarousel({
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-7 h-7 rounded-full bg-white/90 shadow-play flex items-center justify-center shadow-md">
+                  <div className="w-7 h-7 rounded-full bg-white/90 shadow-play flex items-center justify-center">
                     <PlayIcon />
                   </div>
                 </div>

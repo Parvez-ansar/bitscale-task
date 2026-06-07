@@ -1,22 +1,33 @@
 import SearchIcon from "@/components/atoms/icons/SearchIcon";
 import React from "react";
 
-interface SearchBarProps {
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
+interface SearchBarProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "className"
+> {
   wrapperClassName?: string;
+  inputClassName?: string;
+  iconClassName?: string;
+  icon?: React.ReactNode;
 }
 
-const SearchBar = ({ onChange, value, wrapperClassName }: SearchBarProps) => {
+const SearchBar = ({
+  wrapperClassName = "",
+  inputClassName = "",
+  iconClassName = "",
+  icon,
+  placeholder = "Search...",
+  ...inputProps
+}: SearchBarProps) => {
   return (
     <div
       className={`flex items-center bg-subtle rounded-lg ${wrapperClassName}`}>
-      <SearchIcon className="text-helper m-2.5" />
+      {icon ?? <SearchIcon className={`m-2.5 ${iconClassName}`} />}
+
       <input
-        className="placeholder:text-sm placeholder:text-helper text-sm outline-0 grow"
-        placeholder="Search grids and workbooks..."
-        onChange={onChange}
-        value={value}
+        {...inputProps}
+        placeholder={placeholder}
+        className={`grow outline-none text-sm placeholder:text-sm ${inputClassName}`}
       />
     </div>
   );
