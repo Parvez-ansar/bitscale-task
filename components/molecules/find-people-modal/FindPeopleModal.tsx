@@ -134,7 +134,7 @@ const FindPeopleModal = ({ open, onClose }: FindPeopleModalProps) => {
       onClose={onClose}
       size="xl"
       showCloseButton={true}
-      className="!p-0 overflow-hidden max-w-[95vw] max-h-[95vh] lg:h-[718px]">
+      className="!p-0 overflow-hidden max-w-[95vw] max-h-[95dvh] lg:h-[718px]">
       <div className="flex flex-col lg:flex-row h-full overflow-y-auto lg:overflow-hidden">
         {/* Left panel */}
         <div className="w-full lg:w-[319px] shrink-0 flex flex-col gap-4 p-5 border-b lg:border-b-0 lg:overflow-y-auto">

@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex-1 flex flex-col min-w-0">
         <Header />
         <motion.main
-          className="h-[calc(100vh-var(--layout-header-height))] p-4 lg:p-6 overflow-y-auto"
+          className="h-[calc(100dvh-var(--layout-header-height))] p-4 lg:p-6 overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{

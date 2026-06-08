@@ -118,7 +118,7 @@ export function Modal({
               className={cn(
                 "fixed left-1/2 top-1/2 z-50",
                 "-translate-x-1/2 -translate-y-1/2",
-                "h-[95vh]", // ← fixed height always
+                "h-[95dvh]", // ← fixed height always
                 "overflow-hidden", // ← let children scroll internally
                 "rounded-lg border border-border bg-white p-4 sm:p-6 shadow-sm",
                 sizeStyles[size],
